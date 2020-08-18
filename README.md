@@ -1,3 +1,3 @@
 # Exercism
-Practice problems from Exercism's Python path. 
-The following exercises chart my progress as I gain experience in Python coding.
+
+The following exercises chart my progress as I gain experience. Most exercises contain a link to my published solution. 

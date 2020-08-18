@@ -1,0 +1,16 @@
+class Matrix:
+    def __init__(self, matrix_string):
+        #split matrix_string into list using \n as element split
+        split = matrix_string.split("\n")
+        #sort list into rows
+        self.rows = [[int(num) for num in item.split(" ")] for item in split]
+
+    def row(self, index):
+        index -= 1
+        return self.rows[index]
+
+    def column(self, index):
+        index -= 1
+        #create column for index
+        columns = [row[index] for row in self.rows]
+        return columns

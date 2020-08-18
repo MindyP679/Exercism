@@ -1,0 +1,16 @@
+import string
+from collections import Counter
+
+PUNCTUATION = string.punctuation.replace("'","")
+
+def count_words(sentence):
+    for char in sentence:
+        if char in PUNCTUATION:
+           sentence = sentence.replace(char," ")
+
+    sentence = sentence.lower().split()
+    for index, word in enumerate(sentence):
+        sentence[index] = word.strip("'")
+
+    word_count = Counter(sentence)
+    return word_count

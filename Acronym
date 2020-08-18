@@ -1,0 +1,12 @@
+import string
+
+PUNCTUATION = string.punctuation.replace("'","")
+
+def abbreviate(words):
+    for char in words:
+        if char in PUNCTUATION:
+            words = words.replace(char," ")
+
+    words = [word.strip("'") for word in words.split()]
+    acronym = (word[0].upper() for word in words)
+    return "".join(acronym)

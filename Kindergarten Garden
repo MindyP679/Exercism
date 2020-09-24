@@ -1,0 +1,33 @@
+PLANTS = {"G": "Grass", "C": "Clover", "R": "Radishes", "V": "Violets"}
+
+
+class StudentNotFoundError(Exception):
+  """Raise when requested student is not in the plant diagram."""
+
+
+class Garden:
+  students = ["Alice", "Bob", "Charlie", "David",
+              "Eve", "Fred", "Ginny", "Harriet",
+              "Ileana", "Joseph", "Kincaid", "Larry"]
+
+  def __init__(self, diagram, students=None):
+    row_1, row_2 = diagram.split("\n")
+
+    # Create list of plant cups sorted by each student.
+    sorted_diagram = [row_1[i: i + 2] + row_2[i: i + 2]
+                      for i in range(0, len(row_1), 2)]
+
+    if students is None:
+      students = Garden.students[:len(sorted_diagram)]
+    else:
+      students = sorted(students)
+
+    # Create dict with plants assigned to each student.
+    self.sorted_plants = {student: [PLANTS[plant] for plant in
+                                    sorted_diagram[idx]] for idx, student
+                          in enumerate(students)}
+
+  def plants(self, student):
+    if student not in self.sorted_plants:
+      raise StudentNotFoundError(student)
+    return self.sorted_plants[student]
